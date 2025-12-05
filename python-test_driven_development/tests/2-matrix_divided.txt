@@ -1,4 +1,5 @@
 >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+:132
 
 correct input
 >>> matrix = [[1, 2.5, 3], [4.5, 5, 6.5]]
@@ -126,8 +127,7 @@ TypeError: div must be a number
 
 >>> matrix_divided(matrix1)
 Traceback (most recent call last):
-    ...
-TypeError: matrix_divided() missing 1 required positional argument: 'div'
+  TypeError: matrix_divided() takes 2 positional arguments but 3 were gienn
 
 >>> matrix_divided(matrix1, 2, 5)
 Traceback (most recent call last):
