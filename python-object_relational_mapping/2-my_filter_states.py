@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This script lists all states from a MySQL database that match a user-provided
-state name. This version is vulnerable to SQL injection.
+This script lists all states from a MySQL database that match a given name.
+This version is intentionally vulnerable to SQL injection.
 """
 
 import MySQLdb
