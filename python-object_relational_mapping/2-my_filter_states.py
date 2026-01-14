@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-This script lists all states from a MySQL database that match a given name.
-This version is intentionally vulnerable to SQL injection.
+This script lists all states from a MySQL database that match the given name.
 """
 
 import MySQLdb
@@ -23,15 +22,15 @@ if __name__ == "__main__":
         charset="utf8"
     )
 
-    cursor = db.cursor()
-    query = (
-        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
-        .format(state_name)
+    cur = db.cursor()
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(
+        state_name
     )
-    cursor.execute(query)
+    cur.execute(query)
 
-    for state in cursor.fetchall():
-        print(state)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
 
-    cursor.close()
+    cur.close()
     db.close()
