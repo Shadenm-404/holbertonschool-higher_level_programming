@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This script lists all cities of a given state from the database.
+This script lists all cities of a given state from the database hbtn_0e_4_usa.
 """
 
 import MySQLdb
@@ -35,7 +35,9 @@ if __name__ == "__main__":
     )
 
     cities = cur.fetchall()
-    print(", ".join(city[0] for city in cities))
+
+    if cities:
+        print(", ".join(city[0] for city in cities))
 
     cur.close()
     db.close()
