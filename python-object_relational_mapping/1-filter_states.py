@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
-This script lists all states from a MySQL database whose name starts with
-the letter N, sorted by their id.
+Lists all states with names starting with 'N' from the database.
 """
 
-import MySQLdb
 import sys
+import MySQLdb
 
 
 if __name__ == "__main__":
@@ -15,11 +14,10 @@ if __name__ == "__main__":
 
     db = MySQLdb.connect(
         host="localhost",
+        port=3306,
         user=username,
         passwd=password,
-        db=database,
-        port=3306,
-        charset="utf8"
+        db=database
     )
 
     cursor = db.cursor()
@@ -27,7 +25,8 @@ if __name__ == "__main__":
         "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
     )
 
-    for state in cursor.fetchall():
+    states = cursor.fetchall()
+    for state in states:
         print(state)
 
     cursor.close()
