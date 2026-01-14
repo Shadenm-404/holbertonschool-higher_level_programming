@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all states from the database hbtn_0e_0_usa
+This script lists all states from a MySQL database sorted by their id.
 """
 
 import MySQLdb
@@ -17,14 +17,15 @@ if __name__ == "__main__":
         user=username,
         passwd=password,
         db=database,
-        port=3306
+        port=3306,
+        charset="utf8"
     )
 
     cursor = db.cursor()
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    for row in cursor.fetchall():
-        print(row)
+    for state in cursor.fetchall():
+        print(state)
 
     cursor.close()
     db.close()
