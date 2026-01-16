@@ -1,13 +1,18 @@
 #!/usr/bin/python3
 """
-Lists all states with names starting with 'N' from the database.
+Lists all states from the database hbtn_0e_0_usa
+where the name starts with 'N'.
 """
 
-import sys
 import MySQLdb
+import sys
 
 
-if __name__ == "__main__":
+def main():
+    """
+    Connects to a MySQL database and retrieves all states
+    whose names start with the letter 'N'.
+    """
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
@@ -25,9 +30,13 @@ if __name__ == "__main__":
         "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
     )
 
-    states = cursor.fetchall()
-    for state in states:
-        print(state)
+    results = cursor.fetchall()
+    for row in results:
+        print(row)
 
     cursor.close()
     db.close()
+
+
+if __name__ == "__main__":
+    main()
